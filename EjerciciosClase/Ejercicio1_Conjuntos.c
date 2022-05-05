@@ -14,9 +14,44 @@
  */
 
 #include <stdio.h>
+#define SET 10
+
+typedef struct
+{
+    int data[SET];
+    int size; //cuantos elementos se han insertado en el conjunto
+}Set;
+
+void init_set(Set *s);
+int add(Set *s, int valor);
 
 int main()
 {
-    printf("Hello, World!\n");
+    Set set;
+
+    init_set(&set); //inicia el conjunto
+    add(&set, 10);
+
+
     return 0;
+}
+
+void init_set(Set *s)
+{
+    s->size = 0;
+
+    printf("Conjuntos!");
+}
+
+int add(Set *s, int valor)
+{
+    int exists = 0;
+
+    //Si hay espacio y el valor noo existe en el conjunto se agrega
+    if(s->size < SET)//Hay espacio
+    {
+        //'find' es uan funcion que busca el valor dentro del conjunto
+        //y regresa un 1 si lo encontro y 0 si no
+        exists = find(s, valor);
+    }
 }
